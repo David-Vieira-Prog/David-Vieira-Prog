@@ -1,0 +1,14 @@
+
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;900&family=Montserrat&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+.font-main {
+  font-family: "League Spartan", sans-serif;
+}
+.font-secondary {
+  font-family: "Montserrat", sans-serif;
+}

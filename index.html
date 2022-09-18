@@ -1,43 +1,491 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' />
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="tag-html.png" type="image/png">
-    <title>David Vieira</title>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Document</title>
+    <link rel="icon" href="imgs/tag-html.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;900&family=Montserrat&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="main.css">
 </head>
 
-<body>
-    <img alt='User Photo' id='userPhoto' src='Profile_img.jpg' />
-    <span id='userName'>David Vieira Reis</span>
-    <div id="description">
-        Graduando em Ciência da Computação pela
-        Universidade Federal de Sergipe
-        ( <a href="https://www.ufs.br" target="_blank">UFS-SE</a> ).
+<body class="bg-gray-100">
+
+    <!-- navbar -->
+    <!-- This example requires Tailwind CSS v2.0+ -->
+    <nav class="sticky top-0 z-50 bg-sky-700 shadow-md ">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button type="button" id="mobile-menu-button"
+                        class="inline-flex items-center justify-center rounded-md p-2 text-gray-300 hover:bg-sky-900 hover:text-white hover:shadow-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                        aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <!--
+                        Icon when menu is closed.
+            
+                        Heroicon name: outline/bars-3
+            
+                        Menu open: "hidden", Menu closed: "block"
+                        -->
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <!--
+                    Icon when menu is open.
+        
+                    Heroicon name: outline/x-mark
+        
+                    Menu open: "block", Menu closed: "hidden"
+                        -->
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex w-full items-center  sm:items-stretch sm:justify-between">
+                    <div class="flex flex-shrink-0 items-center">
+                        <div class="text-2xl tracking-wide">
+                            <div class="font-main text-gray-200"><span
+                                    class="font-main font-black text-sky-400">d</span>David.dev</div>
+                        </div>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div id="links-pc" class="flex space-x-4 ml-auto">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                            <a class="font-main text-gray-100 hover:bg-sky-900 hover:text-white px-3 py-2 rounded-md hover:shadow font-medium"
+                                aria-current="page" href="#aboutme">Sobre mim </a>
+                            <a class="font-main text-gray-100 hover:bg-sky-900 hover:text-white px-3 py-2 rounded-md hover:shadow font-medium"
+                                href="#projects">Projetos</a>
+
+                            <a class="font-main text-gray-100 hover:bg-sky-900 hover:text-white px-3 py-2 rounded-md hover:shadow font-medium"
+                                href="#work">Experiência
+                                Profissional</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="transition ease-out duration-100 sm:hidden" id="mobile-menu">
+            <div id="links-mobile" class="space-y-2 px-2 pt-2 pb-3">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="#aboutme"
+                    class="font-main text-gray-100 bg-sky-700 hover:bg-sky-900 block px-3 py-2 rounded-md text-base font-medium hover:shadow"
+                    aria-current="page">Sobre Mim</a>
+
+                <a href="#projects"
+                    class="font-main text-gray-100 bg-sky-700 hover:bg-sky-900 block px-3 py-2 rounded-md text-base font-medium hover:shadow">Projetos</a>
+
+                <a href="#work"
+                    class="font-main text-gray-100 bg-sky-700 hover:bg-sky-900  block px-3 py-2 rounded-md text-base font-medium hover:shadow">Experiência
+                    Profissional</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- /navbar -->
+
+    <!-- about me -->
+    <div id="aboutme" class="container mx-auto pt-24 h-20 px-16 h-full">
+        <h1 data-aos="fade-up"
+            class="font-main font-semibold text-3xl text-center text-transparent bg-clip-text bg-gradient-to-b from-sky-600 via-sky-500 to-sky-400 ">
+            Sobre Mim </h1>
+        <div>
+            <div class="flex flex-col align-center space-y-10 lg:flex-row lg:space-x-10 lg:space-y-0 mt-16">
+                <div class="mx-auto flex-shrink-0 overflow-hidden border border-gray-400 rounded-md shadow-md"
+                    data-aos="fade-right" data-aos-duration="700">
+                    <img class="" src="./imgs/teste.jfif" width="350px" alt="">
+                </div>
+                <div data-aos="fade-left" data-aos-duration="700">
+                    <p class="font-secondary font-medium text-gray-800 text-justify">
+                        Olá, meu nome é David Vieira e tenho o sonho de mudar o mundo através das linhas de código.
+                        Desde minha adolescência sempre fui curioso para saber o “como funciona” das coisas e como a
+                        tecnologia poderia beneficiar o mundo, ao ingressar no curso integrado de informática no meu
+                        ensino médio fui capaz de ir mais a fundo para ver os “bastidores” e saber como tudo se
+                        encaixa. Ao longo do meu 3° produzi um sistema que auxiliaria um setor da minha instituição
+                        e fui capaz de sentir o poder das linhas de código no mundo real.Esse é o meu portfólio e
+                        nele você irá encontrar projetos feitos com tecnologias que eu usei/uso para transformar
+                        ideias em realidade.
+
+
+                    </p>
+                    <div class="mt-4 flex flex-col space-y-6 sm:flex-row sm:space-y-0 sm:space-x-6 ">
+                        <span
+                            class="bg-indigo-200 py-1 px-3 text-indigo-800 rounded-md font-secondary text-center shadow-md transition-all ease-linear hover:cursor-pointer hover:-translate-y-1"><i
+                                class="fas fa-code"></i> coding everywhere </span>
+                        <span
+                            class="bg-stone-300 py-1 px-3 text-stone-800 rounded-md font-secondary text-center shadow-md transition-all ease-linear hover:cursor-pointer hover:-translate-y-1"><i
+                                class="fa-solid fa-meteor"></i> astronomium </span>
+                        <span
+                            class="bg-orange-300 py-1 px-3 text-orange-800 rounded-md font-secondary text-center shadow-md transition-all ease-linear hover:cursor-pointer hover:-translate-y-1"><i
+                                class="fa-solid fa-baseball"></i> sporting </span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id='links'>
-        <a class='link' href='mailto:davidvieira0110@gmail.com' target='_blank'><i aria-hidden='true'
-                class='fa fa-envelope-o'></i>E-mail</a>
-        <a class='link' href='https://www.instagram.com/david_reis62/' target='_blank'><i
-                class="fa fa-instagram"></i>Instagram</a>
-        <a class='link' href='https://t.me/ddavid_vieira' target='_blank'><i aria-hidden='true'
-                class='fa fa-telegram'></i>Telegram</a>
-        <a class='link' href='https://www.linkedin.com/in/david-vieira-2b4a53210/' target='_blank'><i aria-hidden='true'
-                class='fa fa-linkedin'></i>LinkedIn</a>
+    <!-- /about me -->
+
+    <!-- projects -->
+    <div id="projects"
+        class="container mx-auto py-8 sm:pt-32 px-16 h-full animate__animated animate__fadeInUp animate__fast">
+        <h1 class="font-main font-semibold text-3xl mb-8 text-center text-transparent bg-clip-text bg-gradient-to-b from-sky-600 via-sky-500 to-sky-400"
+            data-aos="fade-up">
+            Projetos </h1>
+
+        <div id="default-carousel" class="h-screen relative" data-aos="zoom-in" data-aos-duration="500"
+            data-carousel="static">
+            <!-- Carousel wrapper -->
+            <div
+                class="relative overflow-hidden bg-gray-200 border border-gray-300 shadow rounded-lg h-4/5 md:h-4/6 lg:h-3/5">
+                <!-- Item 1 -->
+                <div class="hidden duration-700 ease-in-out flex flex-col lg:flex-row lg:space-x-7 items-center justify-center h-full absolute inset-0 transition-all transform translate-x-0 z-10"
+                    data-carousel-item="active">
+                    <div class="mx-8 lg:mx-0 my-5 space-x-5 sm:flex-shrink-0">
+                        <img class="rounded-md sm:shadow-md w-auto max-h-48 lg:max-h-full"
+                            src="./imgs/projects/project1.png" alt="">
+                    </div>
+                    <div class="flex h-3/5 md:h-auto flex-col space-y-2 my-auto justify-start align-end">
+                        <div class="text-center mx-2 lg:text-start lg:mx-0 sm:mx-8">
+                            <p class="w-full font-secondary text-sm font-medium text-gray-800 sm:text-lg lg:w-96">
+                                Pequeno projeto para usar
+                                os conhecimentos em Tailwind CSS, um framework css rápido e flexível para rápido
+                                desenvolvimento de UI´s. </p>
+                        </div>
+                        <div
+                            class="flex flex-col space-y-2 lg:space-y-0 md:flex-row justify-center items-center md:items-baseline lg:justify-start mx-auto sm:w-96 md:space-x-3 badges">
+                            <img class="shadow rounded"
+                                src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"
+                                alt="">
+                            <img class="shadow rounded"
+                                src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"
+                                alt="">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="hidden duration-700 ease-in-out flex flex-col lg:flex-row lg:space-x-7 items-center justify-center h-full absolute inset-0 transition-all transform translate-x-0 z-10"
+                    data-carousel-item="">
+                    <div class="mx-8 lg:mx-0 my-5 space-x-5 sm:flex-shrink-0">
+                        <img class="rounded-md sm:shadow-md w-auto max-h-48 lg:max-h-full"
+                            src="./imgs/projects/project2p1.png" alt="">
+                    </div>
+                    <div class="flex h-3/5 lg:h-auto flex-col space-y-2 my-auto justify-start align-end">
+                        <div class="text-center mx-2 lg:text-start lg:mx-0  sm:mx-8">
+                            <p class="w-full font-secondary text-sm font-medium text-gray-800 sm:text-lg lg:w-96">
+                                Feito
+                                durante o meu TCC no último período do curso de informática integrada, o sistema web
+                                serve como ferramenta de apoio ao trabalho da coordenadoria responsável pelo
+                                levantamento anual de bens do IFS campus Aracaju. </p>
+                        </div>
+                        <div
+                            class="flex flex-col h-28 pt-10 px-2 md:h-auto md:p-0 md:overflow-visible overflow-y-scroll space-y-2 lg:space-y-0 md:flex-row justify-center items-center md:items-baseline lg:justify-start mx-auto sm:w-96 md:space-x-3 badges">
+                            <img class="shadow rounded"
+                                src="https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white"
+                                alt="">
+                            <img class="shadow rounded"
+                                src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"
+                                alt="">
+                            <img class="shadow rounded"
+                                src="https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white"
+                                alt="">
+                            <img class="shadow rounded"
+                                src="https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white"
+                                alt="">
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="hidden duration-700 ease-in-out flex flex-col lg:flex-row lg:space-x-7 items-center justify-center h-full absolute inset-0 transition-all transform translate-x-0 z-10"
+                    data-carousel-item="">
+                    <div class="flex justify-center mx-auto lg:mx-0 h-2/5 lg:h-auto my-5 space-x-5 sm:flex-shrink-0">
+                        <img class="rounded-md sm:shadow-md w-auto mx-2 sm:mx-0" src="./imgs/projects/project3p1.png"
+                            alt="">
+                        <img class=" rounded shadow-md bg-cover" src="./imgs/projects/project3p2.png" alt="">
+                        <img class="hidden sm:block rounded shadow-md bg-cover" src="./imgs/projects/project3p3.png"
+                            alt="">
+                    </div>
+                    <div class="flex h-3/5 lg:h-auto flex-col space-y-4 my-auto justify-start align-center">
+                        <div class="text-center mx-2 lg:text-start lg:mx-0 sm:mx-8">
+                            <p class="w-full font-secondary text-sm font-medium text-gray-800 sm:text-lg lg:w-96">
+                                Módulo mobile auxiliar ao
+                                sistema web
+                                que serve como ferramenta de apoio ao trabalho da coordenadoria responsável pelo
+                                levantamento anual de bens do IFS campus Aracaju. </p>
+                        </div>
+                        <div class="flex justify-center lg:justify-start mx-auto sm:w-96 space-x-3 badges">
+                            <img class="shadow rounded"
+                                src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white"
+                                alt="">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="hidden duration-700 ease-in-out flex flex-col lg:flex-row lg:space-x-7 items-center justify-center h-full absolute inset-0 transition-all transform translate-x-0 z-10"
+                    data-carousel-item="">
+                    <div class="mx-8 lg:mx-0 my-5 space-x-5 sm:flex-shrink-0">
+                        <img class="rounded-md sm:shadow-md w-auto" src="./imgs/projects/project4.png" alt="">
+                    </div>
+                    <div class="flex h-3/5 lg:h-auto flex-col space-y-2 my-auto justify-start align-end">
+                        <div class="text-center mx-2 lg:text-start lg:mx-0  sm:mx-8">
+                            <p class="w-full font-secondary text-sm font-medium text-gray-800 sm:text-lg lg:w-96">
+                                Pequeno crud em laravel
+                                feito durante o meu "teste" para entrar no meu primeiro trabalho. Consiste em um site
+                                para guardar tarefas, tendo data e dia da semana. </p>
+                        </div>
+                        <div
+                            class="flex flex-col space-y-2 lg:space-y-0 md:flex-row justify-center items-center md:items-baseline lg:justify-start mx-auto sm:w-96 md:space-x-3 badges">
+                            <img class="shadow rounded"
+                                src="https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white"
+                                alt="">
+                            <img class="shadow rounded"
+                                src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"
+                                alt="">
+                            <img class="shadow rounded"
+                                src="https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white"
+                                alt="">
+                            <img class="shadow rounded"
+                                src="https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white"
+                                alt="">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="hidden duration-700 ease-in-out flex flex-col lg:flex-row lg:space-x-7 items-center justify-center h-full absolute inset-0 transition-all transform translate-x-0 z-10"
+                    data-carousel-item="">
+                    <div class="flex justify-center mx-auto lg:mx-0 h-2/5 lg:h-auto my-5 space-x-5 sm:flex-shrink-0">
+                        <img class="rounded-md sm:shadow-md w-auto mx-2 sm:mx-0" src="./imgs/projects/project5p1.png"
+                            alt="">
+                        <img class="hidden sm:block rounded-md shadow-md bg-cover" src="./imgs/projects/project5p2.png"
+                            alt="">
+                    </div>
+                    <div class="flex h-3/5 lg:h-auto flex-col space-y-2 my-auto justify-start align-center">
+                        <div class="text-center mx-2 lg:text-start lg:mx-0  sm:mx-8">
+                            <p class="w-full font-secondary text-sm font-medium text-gray-800 sm:text-lg lg:w-96">
+                                Projeto feito durante o
+                                meu 3° do EM para aprender sobre o framework que seria utilizado no meu TCC. Através de
+                                uma API criada por um colega, o viewhomework faz requisições para obter dados de tarefas
+                                das matérias listadas. </p>
+                        </div>
+                        <div class="flex justify-center lg:justify-start mx-auto sm:w-96 space-x-3 badges">
+                            <img class="shadow rounded"
+                                src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white"
+                                alt="">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Slider indicators -->
+                <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+                    <button type="button" class="w-3 h-3 rounded-full bg-white dark:bg-gray-800" aria-current="true"
+                        aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                    <button type="button"
+                        class="w-3 h-3 rounded-full bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800"
+                        aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                    <button type="button"
+                        class="w-3 h-3 rounded-full bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800"
+                        aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                    <button type="button"
+                        class="w-3 h-3 rounded-full bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800"
+                        aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                    <button type="button"
+                        class="w-3 h-3 rounded-full bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800"
+                        aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+                </div>
+                <!-- Slider controls -->
+                <button type="button"
+                    class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-3 cursor-pointer group focus:outline-none"
+                    data-carousel-prev="">
+                    <span
+                        class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                            </path>
+                        </svg>
+                        <span class="sr-only">Previous</span>
+                    </span>
+                </button>
+                <button type="button"
+                    class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-3 cursor-pointer group focus:outline-none"
+                    data-carousel-next="">
+                    <span
+                        class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                        <span class="sr-only">Next</span>
+                    </span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <!-- /projects -->
+
+    <!-- professional-experience -->
+    <div id="work"
+        class="container mx-auto pb-24 pt-32 h-20 px-16 h-full animate__animated animate__fadeInUp animate__fast">
+        <h1 class="font-main font-semibold text-3xl text-center mb-8 text-transparent bg-clip-text bg-gradient-to-b from-sky-600 via-sky-500 to-sky-400"
+            data-aos="fade-up">
+            Experiência Profissional </h1>
+
+
+        <div id="default-carousel" class="relative" data-aos="zoom-in" data-aos-duration="500" data-carousel="static">
+            <!-- Carousel wrapper -->
+            <div class="overflow-hidden relative h-56 rounded-lg md:h-96">
+                <!-- Item 1 -->
+                <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0 z-20 bg-red-500"
+                    data-carousel-item="">
+
+                </div>
+                <!-- Item 2 -->
+                <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full z-10 bg-blue-500"
+                    data-carousel-item="">
+                </div>
+                <!-- Item 3 -->
+                <div class="duration-700 ease-in-out absolute inset-0 transition-all transform -translate-x-full z-10 bg-amber-500"
+                    data-carousel-item="">
+                </div>
+            </div>
+            <!-- Slider indicators -->
+            <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
+                <button type="button" class="w-3 h-3 rounded-full bg-white dark:bg-gray-800" aria-current="true"
+                    aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                <button type="button"
+                    class="w-3 h-3 rounded-full bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800"
+                    aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                <button type="button"
+                    class="w-3 h-3 rounded-full bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800"
+                    aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+            </div>
+            <!-- Slider controls -->
+            <button type="button"
+                class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                data-carousel-prev="">
+                <span
+                    class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                        </path>
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                </span>
+            </button>
+            <button type="button"
+                class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                data-carousel-next="">
+                <span
+                    class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                    <span class="sr-only">Next</span>
+                </span>
+            </button>
+        </div>
+    </div>
+    <!-- /professional-experience -->
+
+    <!-- navbar -->
+    <div id="contact">
+        <footer
+            class="flex flex-col sm:flex-row justify-center sm:justify-between items-center w-full space-y-8  sm:space-y-0 h-48 py-4 px-24 bg-sky-700 shadow-md">
+            <div class="text-2xl tracking-wide">
+                <div class="font-main text-gray-200"><span class="font-main font-black text-sky-400">d</span>David.dev
+                </div>
+            </div>
+            <div class="flex items-center justify-between space-x-6">
+                <a href="https://github.com/ddavid-vieira" target="_blank">
+                    <i class="fab fa-github fa-xl  text-danger" aria-hidden="true" style="color:#d1d5db"> </i>
+                </a>
+
+                <a href="https://www.linkedin.com/in/david-vieira-2b4a53210/" target="_blank">
+                    <i class="fab fa-linkedin fa-xl" aria-hidden="true" style="color:#d1d5db"></i>
+                </a>
+                <a href="https://www.instagram.com/david_reis62/" target="_blank">
+                    <i class="fab fa-instagram fa-xl" aria-hidden="true" style="color:#d1d5db"></i>
+                </a>
+                <a href="mailto:davidvieira0110@gmail.com" target="_blank">
+                    <i class="fas fa-envelope fa-xl" aria-hidden="true" style="color:#d1d5db"></i>
+                </a>
+
+
+
+            </div>
+        </footer>
     </div>
 
-    <div class='footer'>
-        <a href='https://github.com/ddavid-vieira'>
-            <i aria-hidden='true' class='fa fa-lg fa-github media'></i>
-        </a>
-    </div>
-    <!-- Javascript -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <!-- /navbar -->
+    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        // ----------------------- Pc ---------------------------
+        function activeLinkPc() {
+            removeOthersActive()
+            this.classList.add('bg-sky-900');
+            this.classList.add('text-white');
+
+        }
+        var linksPc = Array.from((document.querySelector('#links-pc').children))
+
+        linksPc.forEach((el) => el.addEventListener("click", activeLinkPc))
+        function removeOthersActive() {
+            linksPc.forEach((el) => {
+                el.classList.remove('bg-sky-900')
+                el.classList.remove('text-white')
+            })
+        }
+        // ----------------------- Mobile ---------------------------
+        function activeLinkMobile() {
+            document.querySelector('#mobile-menu').classList.add('hidden')
+        }
+
+        var linksMobile = Array.from((document.querySelector('#links-mobile').children))
+        linksMobile.forEach((el) => el.addEventListener("click", activeLinkMobile))
+
+
+        function toggleMobileMenu() {
+            document.querySelector('#mobile-menu').classList.toggle('hidden')
+
+        }
+
+        var mobileMenuButton = document.querySelector('#mobile-menu-button')
+        mobileMenuButton.addEventListener('click', toggleMobileMenu)
+
+
+    </script>
 </body>
 
 </html>
